@@ -37,4 +37,19 @@ class Equipo {
         $conn = null;
         return $s->fetchAll();
     }
+
+
+    public static function verEquipo($id) {
+        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $sql = "SELECT * FROM equipos WHERE id = $id";
+        
+        $s = $conn->prepare($sql);
+        $s->execute();
+        $conn = null;
+        return $s->fetch();
+    }
+
+
+
+
 }
