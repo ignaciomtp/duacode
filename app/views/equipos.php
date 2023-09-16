@@ -37,7 +37,7 @@ include "app/views/layout/sidebar.php";
 		                    echo "<td>".$equipo['deporte']."</td>";
 		                    echo "<td>".$equipo['fecha_creacion']."</td>";
 		                    echo "<td><a href='equipos/edit/".$equipo['id']."' class='btn btn-sm btn-info'> Editar </a></td>";
-		                    echo "<td><button type='button' class='btn btn-sm btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal'> Borrar </button></td>";
+		                    echo "<td><button type='button' class='btn btn-sm btn-danger' data-id='".$equipo['id']."' data-name='".$equipo['nombre']."' > Borrar </button></td>";
 		                }
 	            	}
 	            ?>    
@@ -48,23 +48,53 @@ include "app/views/layout/sidebar.php";
     </main>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmDelete" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div class="modal-content text-center">
+      <form method="post" action="equipos/deleteteam">
+
+        <div class="modal-header">
+          <h5 class="modal-title">¿Seguro que quieres borrar este equipo?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h2 id="teamName"></h2>
+          <input type="text" name="teamId" id="teamId" readonly style="visibility: hidden;" />
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="buttonDelete" class="btn btn-primary">Borrar</button>
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
+<script>
+
+  $(document).ready(function() {
+      
+    $('.btn-danger').on("click", borrar);
+  });
+  
+  function borrar(){
+
+    let id = this.dataset.id;
+    let name = this.dataset.name;
+
+    $('#teamName').html(name);
+    $('#teamId').val(id);
+
+    $('#confirmDelete').modal('show');
+  }
+
+  function closeModal() {
+    $('#confirmDelete').modal('hide');
+  }
+
+</script>
 
 <?php
 include "app/views/layout/endfile.php";

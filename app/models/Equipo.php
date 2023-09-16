@@ -67,4 +67,14 @@ class Equipo {
     }
 
 
+    public static function deleteTeam($id) {
+        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $sql = "DELETE FROM equipos WHERE id=$id";
+
+        $s = $conn->prepare($sql);
+        $s->execute();
+        
+        $conn = null;        
+    }
+
 }

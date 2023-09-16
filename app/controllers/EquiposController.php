@@ -61,4 +61,13 @@ class EquiposController extends Controller {
 		exit();		
 	}
 
+	public function borrarEquipo() {
+		$id = $_POST['teamId'];
+
+		Equipo::deleteTeam($id);
+
+		header('Location: ../');
+		exit();
+	}
+
 }
