@@ -4,8 +4,6 @@ class Router {
 
 	public static function handle($method = 'GET', $path = '/', $controller = '', $action = null) {
 
-
-
 		$currentMethod	=	$_SERVER['REQUEST_METHOD'];
 		$currentUri		=	$_SERVER['REQUEST_URI'];
 
@@ -13,9 +11,9 @@ class Router {
 			return false;
 		}
 
-		$root = '/duacode-prueba';
+		//$root = '/duacode-prueba';
 
-		$pattern = '#^'.$root.$path.'$#siD';
+		$pattern = '#^/'.ROOT.$path.'$#siD';
 
 
 		if(preg_match($pattern, $currentUri)) {

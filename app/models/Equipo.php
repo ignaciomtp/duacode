@@ -1,5 +1,7 @@
 <?php
 
+require_once "app/services/useDataService.php";
+
 class Equipo {
     private $id;
     private $nombre;
@@ -13,68 +15,37 @@ class Equipo {
         $this->deporte = $deporte;
         $this->fecha_creacion = $fecha_creacion;
         
-        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "INSERT INTO equipos (nombre, ciudad, deporte, fecha_creacion) VALUES "
-                . "(:nom, :ciu, :dep, :fec)";
-        
-        $s = $conn->prepare($sql);
-        $s->bindValue(":nom", $nombre);
-        $s->bindValue(":ciu", $ciudad);
-        $s->bindValue(":dep", $deporte);
-        $s->bindValue(":fec", $fecha_creacion);
-        
-        $s->execute();
-        
-        $conn = null;
+    }
+
+
+    public function createTeam() {
+        $dbs = connect();
+        $dbs->ds->create($this->nombre, $this->ciudad, $this->deporte, $this->fecha_creacion);        
     }
     
-    public static function allTeams(){
-        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "SELECT * FROM equipos";
-        
-        $s = $conn->prepare($sql);
-        $s->execute();
-        $conn = null;
-        return $s->fetchAll();
+    public static function allTeams() {
+        $dbs = connect();
+
+
+
+        return $dbs->ds->getAll();
     }
 
-
     public static function getTeam($id) {
-        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "SELECT * FROM equipos WHERE id = $id";
-        
-        $s = $conn->prepare($sql);
-        $s->execute();
-        $conn = null;
-        return $s->fetch();
+        $dbs = connect();
+        return $dbs->ds->getOne($id);
     }
 
 
     public static function updateTeam($id, $nombre, $ciudad, $deporte, $fecha_creacion){
-        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "UPDATE equipos SET nombre = :nom, ciudad = :ciu, deporte = :dep, fecha_creacion = :fec WHERE id = $id";
-
-        $s = $conn->prepare($sql);
-        $s->bindValue(":nom", $nombre);
-        $s->bindValue(":ciu", $ciudad);
-        $s->bindValue(":dep", $deporte);
-        $s->bindValue(":fec", $fecha_creacion);
-        
-        $s->execute();
-        
-        $conn = null;        
-        
+        $dbs = connect();
+        $dbs->ds->update($id, $nombre, $ciudad, $deporte, $fecha_creacion);     
     }
 
 
     public static function deleteTeam($id) {
-        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-        $sql = "DELETE FROM equipos WHERE id=$id";
-
-        $s = $conn->prepare($sql);
-        $s->execute();
-        
-        $conn = null;        
+        $dbs = connect();
+        $dbs->ds->delete($id);
     }
 
 }

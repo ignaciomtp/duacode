@@ -5,3 +5,8 @@
 	define( "DB_PASSWORD", '' );
         
 
+	$request = $_SERVER['REQUEST_URI'] ?? '/';
+
+	$uri = explode('/', $request);	
+
+	define( "ROOT", $uri[1] );
