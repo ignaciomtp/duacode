@@ -1,6 +1,7 @@
 <?php 
 
 include "app/views/layout/base.php";
+include "app/views/layout/styles.php";
 include "app/views/layout/sidebar.php";
 ?>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">              
@@ -35,7 +36,7 @@ include "app/views/layout/sidebar.php";
 		                    echo "<td>".$equipo['ciudad']."</td>";
 		                    echo "<td>".$equipo['deporte']."</td>";
 		                    echo "<td>".$equipo['fecha_creacion']."</td>";
-		                    echo "<td><a href='#' class='btn btn-sm btn-info'> Editar </a></td>";
+		                    echo "<td><a href='equipos/edit/".$equipo['id']."' class='btn btn-sm btn-info'> Editar </a></td>";
 		                    echo "<td><button type='button' class='btn btn-sm btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal'> Borrar </button></td>";
 		                }
 	            	}

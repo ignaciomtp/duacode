@@ -21,19 +21,15 @@ class EquiposController extends Controller {
 
 		$id = end($uri);
 
-		$equipo = Equipo::verEquipo($id);
+		$equipo = Equipo::getTeam($id);
 
-		echo "<pre>";
-		print_r($equipo);
-		echo "</pre>";		
-
-		die();
+		$this->view('editar-equipo', ['equipo' => $equipo]);
 
 	}
 
 	public function nuevoEquipo() {
 
-		$this->view('formulario-equipos');
+		$this->view('nuevo-equipo');
 	}
 
 	public function crearEquipo() {
@@ -47,7 +43,22 @@ class EquiposController extends Controller {
 		$equipo = new Equipo($nombre, $ciudad, $deporte, $fundacion);
 
 		header('Location: ../');
+		exit();
 
+	}
+
+	public function actualizarEquipo() {
+
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre'];
+		$ciudad = $_POST['ciudad'];
+		$deporte = $_POST['deporte'];
+		$fundacion = $_POST['fundacion'];
+
+		Equipo::updateTeam($id, $nombre, $ciudad, $deporte, $fundacion);
+
+		header('Location: ../../');
+		exit();		
 	}
 
 }

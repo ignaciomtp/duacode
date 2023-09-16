@@ -39,7 +39,7 @@ class Equipo {
     }
 
 
-    public static function verEquipo($id) {
+    public static function getTeam($id) {
         $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
         $sql = "SELECT * FROM equipos WHERE id = $id";
         
@@ -50,6 +50,21 @@ class Equipo {
     }
 
 
+    public static function updateTeam($id, $nombre, $ciudad, $deporte, $fecha_creacion){
+        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $sql = "UPDATE equipos SET nombre = :nom, ciudad = :ciu, deporte = :dep, fecha_creacion = :fec WHERE id = $id";
+
+        $s = $conn->prepare($sql);
+        $s->bindValue(":nom", $nombre);
+        $s->bindValue(":ciu", $ciudad);
+        $s->bindValue(":dep", $deporte);
+        $s->bindValue(":fec", $fecha_creacion);
+        
+        $s->execute();
+        
+        $conn = null;        
+        
+    }
 
 
 }
