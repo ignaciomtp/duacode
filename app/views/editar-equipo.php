@@ -13,7 +13,7 @@ include "app/views/layout/sidebar.php";
 
           </div>    
 
-          <form method="POST" >
+          <form method="POST" id="teamForm">
 
             <div class="row">
               <div class="col-6 row">
@@ -45,7 +45,7 @@ include "app/views/layout/sidebar.php";
                   <label for="deporte" class="form-label">Deporte</label>
                   
                   <select class="form-control" id="deporte" name="deporte">
-                    <option>- Elija uno -</option>
+                    <option value="">- Elija uno -</option>
                     <option value="Fútbol" <?php if($data['equipo']['deporte'] === 'Fútbol') echo 'selected' ?> >Fútbol</option>
                     <option value="Baloncesto" <?php if($data['equipo']['deporte'] === 'Baloncesto') echo 'selected' ?> >Baloncesto</option>
                   </select>
@@ -70,4 +70,6 @@ include "app/views/layout/sidebar.php";
 
 
 <?php
+
+include "app/views/layout/validation.php";
 include "app/views/layout/endfile.php";

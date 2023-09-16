@@ -25,9 +25,6 @@ class Equipo {
     
     public static function allTeams() {
         $dbs = connect();
-
-
-
         return $dbs->ds->getAll();
     }
 

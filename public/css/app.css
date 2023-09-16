@@ -606,6 +606,10 @@ pre code {
   }
 }
 
+.error {
+  color: red;
+}
+
 .container-fluid,
 .container-xl,
 .container-lg,

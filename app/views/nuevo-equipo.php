@@ -13,7 +13,7 @@ include "app/views/layout/sidebar.php";
 
           </div>    
 
-          <form method="POST" >
+          <form method="POST" id="teamForm">
 
             <div class="row">
               <div class="col-6">
@@ -35,7 +35,7 @@ include "app/views/layout/sidebar.php";
                   <label for="deporte" class="form-label">Deporte</label>
                   
                   <select class="form-control" id="deporte" name="deporte">
-                    <option>- Elija uno -</option>
+                    <option value="">- Elija uno -</option>
                     <option value="Fútbol">Fútbol</option>
                     <option value="Baloncesto">Baloncesto</option>
                   </select>
@@ -57,6 +57,7 @@ include "app/views/layout/sidebar.php";
     </main>
 
 
-
 <?php
+
+include "app/views/layout/validation.php";
 include "app/views/layout/endfile.php";
