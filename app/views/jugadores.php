@@ -39,7 +39,7 @@ include "app/views/layout/sidebar.php";
 		                    echo "<td>".$jugador['numero']."</td>";
 		                    echo "<td>".$jugador['fecha_nacimiento']."</td>";
 		                    echo "<td><a href='jugadores/edit/".$jugador['id']."' class='btn btn-sm btn-info'> Editar </a></td>";
-		                    echo "<td><button type='button' class='btn btn-sm btn-danger' data-id='".$jugador['id']."' data-name='".$jugador['nombre']."' > Borrar </button></td>";
+		                    echo "<td><button type='button' class='btn btn-sm btn-danger' data-id='".$jugador['id']."' data-name='".$jugador['nombre']." ".$jugador['apellidos']."' > Borrar </button></td>";
 		                }
 	            	}
 	            ?>    

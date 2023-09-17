@@ -70,11 +70,11 @@ class JugadoresController extends Controller {
 
 	public function borrarJugador() {
 
-		$id = $_POST['id'];
+		$id = $_POST['playerId'];
 
 		Jugador::deletePlayer($id);
 
-		header('Location: ../');
+		header('Location: ../jugadores');
 		exit();
 	}
 

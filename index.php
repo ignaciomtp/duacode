@@ -15,3 +15,4 @@ Router::post('/equipos/deleteteam', 'EquiposController', 'borrarEquipo');
 Router::get('/jugadores', 'JugadoresController', 'index');
 Router::get('/jugadores/add', 'JugadoresController', 'nuevoJugador');
 Router::post('/jugadores/add', 'JugadoresController', 'crearJugador');
+Router::post('/jugadores/deleteplayer', 'JugadoresController', 'borrarJugador');
