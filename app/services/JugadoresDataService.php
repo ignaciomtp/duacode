@@ -11,8 +11,8 @@ class JugadoresDataService implements dataServiceInterface {
 	}
 
 	public function getAll() {
-		$this->sql = "SELECT * FROM jugadores";
-        
+		$this->sql = "SELECT J.id, J.nombre, J.apellidos, J.numero, J.fecha_nacimiento, E.nombre AS equipo FROM jugadores J LEFT JOIN equipos E ON J.id_equipo = E.id";
+
                 $s = $this->conn->prepare($this->sql);
                 $s->execute();
                 $this->conn = null;
