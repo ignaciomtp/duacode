@@ -8,13 +8,14 @@ class Jugador {
     private $apellidos;
     private $numero;
     private $fecha_nacimiento;
+    private $equipo;
 
-    function __construct($nombre, $apellidos, $numero, $fecha_nacimiento) {
+    function __construct($nombre, $apellidos, $numero, $fecha_nacimiento, $equipo) {
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->numero = $numero;
         $this->fecha_nacimiento = $fecha_nacimiento;
-        
+        $this->equipo = $equipo;
     }
 
     public static function getPlayersByTeam($idPlayer) {
@@ -31,7 +32,8 @@ class Jugador {
 
     public function createPlayer() {
         $dbs = connectJugador();
-        $dbs->create($this->nombre, $this->apellidos, $this->numero, $this->fecha_nacimiento);        
+        $id = $dbs->create($this->nombre, $this->apellidos, $this->numero, $this->fecha_nacimiento);    
+        $dbs->updatePlayerTeam($id, $this->equipo);    
     }
     
 

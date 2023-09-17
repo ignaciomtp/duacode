@@ -48,8 +48,10 @@ class JugadoresDataService implements dataServiceInterface {
                 $s->bindValue(":fec", $fecha_nacimiento);
                 
                 $s->execute();
-                
-                $this->conn = null;		
+
+                $idPlayer = $this->conn->lastInsertId();	
+
+                return $idPlayer;	
 	}
 
 	public function update($id, $nombre, $apellidos, $numero, $fecha_nacimiento) {
@@ -66,6 +68,15 @@ class JugadoresDataService implements dataServiceInterface {
                 
                 $this->conn = null;    
 	}
+
+        public function updatePlayerTeam($id, $idTeam) {
+                $this->sql = "UPDATE jugadores SET id_equipo = :idq WHERE id = $id";
+                $s = $this->conn->prepare($this->sql);
+                $s->bindValue(":idq", $idTeam);
+                $s->execute();
+                
+                $this->conn = null;    
+        }
 
 	public function delete($id) {
 		$this->sql = "DELETE FROM jugadores WHERE id=$id";

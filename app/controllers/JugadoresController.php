@@ -25,15 +25,16 @@ class JugadoresController extends Controller {
 
 		$jugador = Jugador::getPlayer($id);
 
-		$equipos = Equipo::allPlayers();
+		$equipos = Equipo::allTeams();
 
 		$this->view('editar-jugador', ['jugador' => $jugador, 'equipos' => $equipos]);
 
 	}
 
 	public function nuevoJugador() {
+		$equipos = Equipo::allTeams();
 
-		$this->view('nuevo-jugador');
+		$this->view('nuevo-jugador', ['equipos' => $equipos]);
 	}
 
 	public function crearJugador() {
@@ -42,12 +43,13 @@ class JugadoresController extends Controller {
 		$apellidos = $_POST['apellidos'];
 		$numero = $_POST['numero'];
 		$nacimiento = $_POST['nacimiento'];
+		$equipo = $_POST['equipo'];
 
-		$jugador = new Equipo($nombre, $apellidos, $numero, $nacimiento);
+		$jugador = new Jugador($nombre, $apellidos, $numero, $nacimiento, $equipo);
 
 		$jugador->createPlayer();
 
-		header('Location: ../');
+		header('Location: ../jugadores');
 		exit();
 
 	}
