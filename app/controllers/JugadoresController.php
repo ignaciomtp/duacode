@@ -61,10 +61,11 @@ class JugadoresController extends Controller {
 		$apellidos = $_POST['apellidos'];
 		$numero = $_POST['numero'];
 		$nacimiento = $_POST['nacimiento'];
+		$equipo = $_POST['equipo'];
 
-		Jugador::updatePlayer($id, $nombre, $apellidos, $numero, $nacimiento);
+		Jugador::updatePlayer($id, $nombre, $apellidos, $numero, $nacimiento, $equipo);
 
-		header('Location: ../../');
+		header('Location: ../../jugadores');
 		exit();		
 	}
 

@@ -43,9 +43,10 @@ class Jugador {
     }
 
 
-    public static function updatePlayer($id, $nombre, $apellidos, $numero, $fecha_nacimiento){
+    public static function updatePlayer($id, $nombre, $apellidos, $numero, $fecha_nacimiento, $equipo){
         $dbs = connectJugador();
-        $dbs->update($id, $nombre, $apellidos, $numero, $fecha_nacimiento);     
+        $dbs->update($id, $nombre, $apellidos, $numero, $fecha_nacimiento);  
+        $dbs->updatePlayerTeam($id, $equipo);    
     }
 
 

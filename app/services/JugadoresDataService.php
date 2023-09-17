@@ -65,8 +65,7 @@ class JugadoresDataService implements dataServiceInterface {
                 $s->bindValue(":fec", $fecha_nacimiento);
                 
                 $s->execute();
-                
-                $this->conn = null;    
+                  
 	}
 
         public function updatePlayerTeam($id, $idTeam) {

@@ -2,7 +2,7 @@
 
 include "app/views/layout/base.php";
 include "app/views/layout/styles3.php";
-include "app/views/layout/sidebar.php";
+include "app/views/layout/sidebar3.php";
 ?>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">              
 
@@ -104,6 +104,6 @@ include "app/views/layout/sidebar.php";
 
 
 <?php
-
-include "app/views/layout/validation.php";
+include "app/views/layout/modal-jugador.php";
+include "app/views/layout/validacion-equipo.php";
 include "app/views/layout/endfile.php";
