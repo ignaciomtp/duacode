@@ -2,6 +2,7 @@
 
 require_once 'Controller.php';
 require_once "app/models/Equipo.php";
+require_once "app/models/Jugador.php";
 
 
 class EquiposController extends Controller {
@@ -24,7 +25,9 @@ class EquiposController extends Controller {
 
 		$equipo = Equipo::getTeam($id);
 
-		$this->view('editar-equipo', ['equipo' => $equipo]);
+		$jugadores = Jugador::getPlayersByTeam($id);
+
+		$this->view('editar-equipo', ['equipo' => $equipo, 'jugadores' => $jugadores]);
 
 	}
 
@@ -64,7 +67,7 @@ class EquiposController extends Controller {
 	}
 
 	public function borrarEquipo() {
-		
+
 		$id = $_POST['teamId'];
 
 		Equipo::deleteTeam($id);

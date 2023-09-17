@@ -17,32 +17,33 @@ class Equipo {
         
     }
 
+    public static function allTeams() {
+        $dbs = connectEquipo();
+        return $dbs->getAll();
+    }
+
 
     public function createTeam() {
-        $dbs = connect();
-        $dbs->ds->create($this->nombre, $this->ciudad, $this->deporte, $this->fecha_creacion);        
+        $dbs = connectEquipo();
+        $dbs->create($this->nombre, $this->ciudad, $this->deporte, $this->fecha_creacion);        
     }
     
-    public static function allTeams() {
-        $dbs = connect();
-        return $dbs->ds->getAll();
-    }
 
     public static function getTeam($id) {
-        $dbs = connect();
-        return $dbs->ds->getOne($id);
+        $dbs = connectEquipo();
+        return $dbs->getOne($id);
     }
 
 
     public static function updateTeam($id, $nombre, $ciudad, $deporte, $fecha_creacion){
-        $dbs = connect();
-        $dbs->ds->update($id, $nombre, $ciudad, $deporte, $fecha_creacion);     
+        $dbs = connectEquipo();
+        $dbs->update($id, $nombre, $ciudad, $deporte, $fecha_creacion);     
     }
 
 
     public static function deleteTeam($id) {
-        $dbs = connect();
-        $dbs->ds->delete($id);
+        $dbs = connectEquipo();
+        $dbs->delete($id);
     }
 
 }

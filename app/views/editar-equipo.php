@@ -64,6 +64,40 @@ include "app/views/layout/sidebar.php";
             <button type="submit" class="btn btn-primary">Guardar</button>
             <a class="btn btn-dark ml-2" href="../../equipos">Volver</a>
           </form>
+
+        <div class="table-responsive mt-5">
+          <h2>Jugadores</h2>
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nombre</th>
+                  <th>Apellidos</th>
+                  <th>Número</th>
+                  <th>Nacimiento</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+                if(isset($data['jugadores'])) {
+                    foreach ($data['jugadores'] as $jugador){
+                        echo "<tr><td>".$jugador['id']."</td>";
+                        echo "<td>".$jugador['nombre']."</td>";
+                        echo "<td>".$jugador['apellidos']."</td>";
+                        echo "<td>".$jugador['numero']."</td>";
+                        echo "<td>".$jugador['fecha_nacimiento']."</td>";
+                        echo "<td><a href='../../jugadores/edit/".$jugador['id']."' class='btn btn-sm btn-info'> Editar </a></td>";
+                        echo "<td><button type='button' class='btn btn-sm btn-danger' data-id='".$jugador['id']."' data-name='".$jugador['nombre']."' > Borrar </button></td>";
+                    }
+                }
+              ?>    
+              </tbody>
+
+            </table>
+        </div>
+
         </div>
     </main>
 

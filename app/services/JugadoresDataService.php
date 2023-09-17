@@ -2,7 +2,7 @@
 
 require_once "dataServiceInterface.php";
 
-class EquiposDataService implements dataServiceInterface {
+class JugadoresDataService implements dataServiceInterface {
 	private $conn;
 	private $sql;
 
@@ -11,7 +11,7 @@ class EquiposDataService implements dataServiceInterface {
 	}
 
 	public function getAll() {
-		$this->sql = "SELECT * FROM equipos";
+		$this->sql = "SELECT * FROM jugadores";
         
                 $s = $this->conn->prepare($this->sql);
                 $s->execute();
@@ -19,8 +19,17 @@ class EquiposDataService implements dataServiceInterface {
                 return $s->fetchAll();
 	}
 
+        public function getAllFromTeam($idTeam) {
+                $this->sql = "SELECT * FROM jugadores WHERE id_equipo = $idTeam";
+
+                $s = $this->conn->prepare($this->sql);
+                $s->execute();
+                $this->conn = null;
+                return $s->fetchAll();
+            }
+
 	public function getOne($id) {
-                $this->sql = "SELECT * FROM equipos WHERE id = $id";
+                $this->sql = "SELECT * FROM jugadores WHERE id = $id";
                 
                 $s = $this->conn->prepare($this->sql);
                 $s->execute();
@@ -28,30 +37,30 @@ class EquiposDataService implements dataServiceInterface {
                 return $s->fetch();		
 	}
 
-	public function create($nombre, $ciudad, $deporte, $fecha_creacion) {
-                $this->sql = "INSERT INTO equipos (nombre, ciudad, deporte, fecha_creacion) VALUES "
+	public function create($nombre, $apellidos, $numero, $fecha_nacimiento) {
+                $this->sql = "INSERT INTO jugadores (nombre, apellidos, numero, fecha_nacimiento) VALUES "
                         . "(:nom, :ciu, :dep, :fec)";
                 
                 $s = $this->conn->prepare($this->sql);
                 $s->bindValue(":nom", $nombre);
-                $s->bindValue(":ciu", $ciudad);
-                $s->bindValue(":dep", $deporte);
-                $s->bindValue(":fec", $fecha_creacion);
+                $s->bindValue(":ciu", $apellidos);
+                $s->bindValue(":dep", $numero);
+                $s->bindValue(":fec", $fecha_nacimiento);
                 
                 $s->execute();
                 
                 $this->conn = null;		
 	}
 
-	public function update($id, $nombre, $ciudad, $deporte, $fecha_creacion) {
+	public function update($id, $nombre, $apellidos, $numero, $fecha_nacimiento) {
 
-                $this->sql = "UPDATE equipos SET nombre = :nom, ciudad = :ciu, deporte = :dep, fecha_creacion = :fec WHERE id = $id";
+                $this->sql = "UPDATE jugadores SET nombre = :nom, apellidos = :ciu, numero = :dep, fecha_nacimiento = :fec WHERE id = $id";
 
                 $s = $this->conn->prepare($this->sql);
                 $s->bindValue(":nom", $nombre);
-                $s->bindValue(":ciu", $ciudad);
-                $s->bindValue(":dep", $deporte);
-                $s->bindValue(":fec", $fecha_creacion);
+                $s->bindValue(":ciu", $apellidos);
+                $s->bindValue(":dep", $numero);
+                $s->bindValue(":fec", $fecha_nacimiento);
                 
                 $s->execute();
                 
@@ -59,7 +68,7 @@ class EquiposDataService implements dataServiceInterface {
 	}
 
 	public function delete($id) {
-		$this->sql = "DELETE FROM equipos WHERE id=$id";
+		$this->sql = "DELETE FROM jugadores WHERE id=$id";
 
                 $s = $this->conn->prepare($this->sql);
                 $s->execute();

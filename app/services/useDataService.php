@@ -1,13 +1,15 @@
 <?php
 
-require_once "DataServiceInterface.php";
+
 require_once "EquiposDataService.php";
-require_once "DataService.php";
+require_once "JugadoresDataService.php";
 
 
+function connectEquipo() {
+	return new EquiposDataService;
+}
 
 
-function connect() {
-	$equiposDataService = new EquiposDataService;
-	return new DataService($equiposDataService);
+function connectJugador() {
+	return new JugadoresDataService;
 }
