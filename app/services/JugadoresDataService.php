@@ -77,6 +77,13 @@ class JugadoresDataService implements dataServiceInterface {
                 $this->conn = null;    
         }
 
+        public function updatePlayerCaptain($id, $captain) {
+                $this->sql = "UPDATE jugadores SET capitan = :cap WHERE id = $id";
+                $s = $this->conn->prepare($this->sql);
+                $s->bindValue(":cap", $captain);
+                $s->execute();  
+        }
+
 	public function delete($id) {
 		$this->sql = "DELETE FROM jugadores WHERE id=$id";
 
@@ -85,4 +92,5 @@ class JugadoresDataService implements dataServiceInterface {
                 
                 $this->conn = null;     
 	}
+
 }

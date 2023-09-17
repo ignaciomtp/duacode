@@ -46,4 +46,9 @@ class Equipo {
         $dbs->delete($id);
     }
 
+    public static function getTeamCaptain($id) {
+        $dbs = connectEquipo();
+        return $dbs->getCaptain($id);
+    }
+
 }

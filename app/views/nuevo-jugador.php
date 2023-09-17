@@ -53,13 +53,23 @@ include "app/views/layout/sidebar2.php";
                   </div>                  
                 </div>
 
+                <div class="col-4">
+                    <div class="form-check mt-3 pt-3">
+                      <input class="form-check-input" type="checkbox" value="" id="capitan" name="capitan" >
+                      <label class="form-check-label" for="capitan">
+                        Capitán
+                      </label>
+                    </div>
+                </div>
+                <div class="col-8">
+                  <div class="mb-3">
+                    <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="nacimiento" name="nacimiento" >
+                    
+                  </div>                 
+                </div>
 
-
-                <div class="mb-3">
-                  <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
-                  <input type="date" class="form-control" id="nacimiento" name="nacimiento" >
-                  
-                </div>              
+            
               </div>
             </div>
 

@@ -44,8 +44,9 @@ class JugadoresController extends Controller {
 		$numero = $_POST['numero'];
 		$nacimiento = $_POST['nacimiento'];
 		$equipo = $_POST['equipo'];
+		$capitan = isset($_POST['capitan']) ? true : false;
 
-		$jugador = new Jugador($nombre, $apellidos, $numero, $nacimiento, $equipo);
+		$jugador = new Jugador($nombre, $apellidos, $numero, $nacimiento, $equipo, $capitan);
 
 		$jugador->createPlayer();
 
@@ -62,8 +63,9 @@ class JugadoresController extends Controller {
 		$numero = $_POST['numero'];
 		$nacimiento = $_POST['nacimiento'];
 		$equipo = $_POST['equipo'];
+		$capitan = isset($_POST['capitan']) ? true : false;
 
-		Jugador::updatePlayer($id, $nombre, $apellidos, $numero, $nacimiento, $equipo);
+		Jugador::updatePlayer($id, $nombre, $apellidos, $numero, $nacimiento, $equipo, $capitan);
 
 		header('Location: ../../jugadores');
 		exit();		

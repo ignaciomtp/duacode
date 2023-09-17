@@ -76,4 +76,24 @@ class EquiposController extends Controller {
 		exit();
 	}
 
+	public function verCapitan() {
+		$path_info = $_SERVER['REQUEST_URI'] ?? '/';
+
+		$uri = explode('/', $path_info);	
+
+		$id = end($uri);
+
+		$capitan = Equipo::getTeamCaptain($id);
+
+		if($capitan) {
+			$equipos = Equipo::allTeams();
+
+			$this->view('editar-jugador', ['jugador' => $capitan, 'equipos' => $equipos]);		
+		} else {
+			$this->view('error-page', ['id' => $id]);
+		}
+
+
+	}
+
 }

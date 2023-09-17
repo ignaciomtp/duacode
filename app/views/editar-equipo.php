@@ -63,6 +63,10 @@ include "app/views/layout/sidebar3.php";
 
             <button type="submit" class="btn btn-primary">Guardar</button>
             <a class="btn btn-dark ml-2" href="../../equipos">Volver</a>
+
+            <span class="float-right">
+              <a href="../../equipos/capitan/<?php echo $data['equipo']['id'] ?>" class="btn btn-success mr-3">Capitán</a>
+            </span>
           </form>
 
         <div class="table-responsive mt-5">

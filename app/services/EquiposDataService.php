@@ -66,4 +66,15 @@ class EquiposDataService implements dataServiceInterface {
                 
                 $this->conn = null;     
 	}
+
+
+        public function getCaptain($idTeam) {
+                $this->sql = "SELECT * FROM jugadores WHERE id_equipo = $idTeam AND capitan = true";
+
+                $s = $this->conn->prepare($this->sql);
+                $s->execute();
+                $this->conn = null;
+                return $s->fetch();                
+        }
+
 }
