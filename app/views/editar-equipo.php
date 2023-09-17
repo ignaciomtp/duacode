@@ -65,7 +65,7 @@ include "app/views/layout/sidebar3.php";
             <a class="btn btn-dark ml-2" href="../../equipos">Volver</a>
 
             <span class="float-right">
-              <a href="../../equipos/capitan/<?php echo $data['equipo']['id'] ?>" class="btn btn-success mr-3">Capitán</a>
+              <button type="button" onclick="getCaptain()" class="btn btn-success mr-3">Capitán</button>
             </span>
           </form>
 
@@ -100,6 +100,10 @@ include "app/views/layout/sidebar3.php";
               </tbody>
 
             </table>
+        </div>
+
+        <div style="visibility: hidden;">
+          <input type="text" name="root" id="root" value="<?php echo ROOT ?>">
         </div>
 
         </div>

@@ -11,7 +11,6 @@ class Router {
 			return false;
 		}
 
-		//$root = '/duacode-prueba';
 
 		$pattern = '#^/'.ROOT.$path.'$#siD';
 
@@ -37,12 +36,5 @@ class Router {
 		return self::handle('POST', $path, $controller, $action);
 	}
 
-	public static function put($path = '/', $controller = '', $action = null) {
-		return self::handle('PUT', $path, $controller, $action);
-	}
-
-	public static function delete($path = '/', $controller = '', $action = null) {
-		return self::handle('DELETE', $path, $controller, $action);
-	}
 
 }

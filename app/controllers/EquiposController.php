@@ -85,14 +85,9 @@ class EquiposController extends Controller {
 
 		$capitan = Equipo::getTeamCaptain($id);
 
-		if($capitan) {
-			$equipos = Equipo::allTeams();
+		echo json_encode($capitan);
 
-			$this->view('editar-jugador', ['jugador' => $capitan, 'equipos' => $equipos]);		
-		} else {
-			$this->view('error-page', ['id' => $id]);
-		}
-
+		die();
 
 	}
 
