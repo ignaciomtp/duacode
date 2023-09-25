@@ -14,7 +14,6 @@ class Router {
 
 		$pattern = '#^/'.ROOT.$path.'$#siD';
 
-
 		if(preg_match($pattern, $currentUri)) {
 
 			require_once __DIR__ . '/controllers/'. $controller.'.php';	
